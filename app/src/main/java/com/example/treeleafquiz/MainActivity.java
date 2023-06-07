@@ -9,11 +9,10 @@ import android.os.Bundle;
 import android.util.Log;
 import com.example.treeleafquiz.database.Converters.Converters;
 import com.example.treeleafquiz.database.Dao.QuestionDao;
-import com.example.treeleafquiz.database.Database.AppDatabase;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
 import com.example.treeleafquiz.model.Question;
 import com.example.treeleafquiz.network.QuizApi;
-import com.example.treeleafquiz.network.RetrofitClient;
+
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;

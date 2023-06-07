@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.TreeLeafQuiz" parent="Base.Theme.TreeLeafQuiz" />
+
+    <style name="poppins_medium_font" parent="android:TextAppearance">
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="fontFamily">@font/poppins_medium</item>
+    </style>
 </resources>

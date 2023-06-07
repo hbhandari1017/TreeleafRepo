@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="warmPink">#FB724C</color>
+
+    <color name="borderFocusedColor">#1392C5</color>
+    <color name="errorRedColor">#FF2E00</color>
+    <color name="inputLabel">#324851</color>
+    <color name="border">#C4C4C4</color>
+    <color name="lt_grey">#C4C4C4</color>
+    <color name="action_button_color">#aeaeae</color>
+    <color name="textColor">#324851</color>
+    <color name="ltTextColor">#7A7A7A</color>
 </resources>
