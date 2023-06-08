@@ -2,14 +2,14 @@ package com.example.treeleafquiz;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.room.Entity;
-import androidx.room.Room;
-
+import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import com.example.treeleafquiz.database.Converters.Converters;
 import com.example.treeleafquiz.database.Dao.QuestionDao;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
+import com.example.treeleafquiz.fragments.LoginFragment;
+import com.example.treeleafquiz.fragments.QuizQuestionFrag;
 import com.example.treeleafquiz.model.Question;
 import com.example.treeleafquiz.network.QuizApi;
 
@@ -29,28 +29,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Inject
    QuizApi apiClient;
-  // QuizApi apiClient = RetrofitClient.getClient().create(QuizApi.class);
-  //  AppDatabase appDatabase ;
 
     @Inject
     QuestionDao questionDao;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        initDB();
-        getALlQuestions();
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container,LoginFragment.newInstance());
+        transaction.commit();
+       // getALlQuestions();
+    }
+    public void moveToQuestionFragment(){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, QuizQuestionFrag.newInstance());
+        transaction.addToBackStack(null);
+        transaction.commit();
+
     }
 
-//    private void initDB() {
-//        appDatabase = Room.databaseBuilder(getApplicationContext(),
-//                        AppDatabase.class, "TreeLeafQuiz")
-//                .build();
-//        questionDao = appDatabase.questionDao();
-//
-//    }
 
     private void getALlQuestions() {
 

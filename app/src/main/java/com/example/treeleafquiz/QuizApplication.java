@@ -2,6 +2,8 @@ package com.example.treeleafquiz;
 
 import android.app.Application;
 
+import com.example.treeleafquiz.util.QuizPreference;
+
 import dagger.hilt.android.HiltAndroidApp;
 
 
@@ -11,7 +13,7 @@ public class QuizApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        // Perform initialization tasks here
+        QuizPreference.init(getApplicationContext());
     }
 
     @Override

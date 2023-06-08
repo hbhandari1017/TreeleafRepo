@@ -1,13 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    android:orientation="vertical"
     tools:context=".fragments.LoginFragment">
 
-    <TextView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/welcomeCardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:background="@color/white"
+        android:visibility="visible"
+        tools:cardCornerRadius="25dp"
+        tools:cardElevation="5dp">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/white">
+
+            <TextView
+                android:id="@+id/welcomeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Welcome"
+                android:textColor="#000000"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/whatShouldTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/welcomeTextView"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="6dp"
+                android:fontFamily="@font/nunito_regular"
+                android:text="What should we call you?"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
+                android:id="@+id/nameEditText"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/whatShouldTextView"
+                android:layout_centerHorizontal="true"
+                android:orientation="vertical"
+                android:padding="4dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_fields"
+                    android:layoutDirection="ltr"
+                    android:orientation="vertical"
+                    android:paddingBottom="3dp">
+
+                    <TextView
+                        android:id="@+id/nameLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/nunito_regular"
+                        android:text="Name"
+                        android:textColor="#AEAEB2"
+                        android:textSize="@dimen/smallTextSize" />
+
+                    <EditText
+                        android:id="@+id/userNameEditText"
+                        style="@style/poppins_medium_font"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/nameLabel"
+                        android:layout_marginTop="1dp"
+                        android:background="@drawable/edittext_no_border_round_corner_with_background_color"
+                        android:imeOptions="actionDone"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:minHeight="35dp"
+                        android:paddingLeft="16dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/inputLabel"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/nameErrorTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/nunito_regular"
+                    android:text="error"
+                    android:textColor="@color/errorRedColor"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+
+            <android.widget.Button
+                android:id="@+id/submitButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/nameEditText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/button_bg_warm_pink"
+                android:fontFamily="@font/nunito_bold"
+                android:text="Submit"
+                android:textColor="#FFFFFF" />
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</RelativeLayout>
