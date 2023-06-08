@@ -24,10 +24,10 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class LoginViewModel extends ViewModel {
+public class SharedViewModel extends ViewModel {
 
     @Inject
-    public LoginViewModel(SharedRepository repository) {
+    public SharedViewModel(SharedRepository repository) {
         this.repository = repository;
         questionsLiveData = new MutableLiveData<>();
         questionsFromApiState = new MutableLiveData<>();

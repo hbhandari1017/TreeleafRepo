@@ -1,4 +1,4 @@
-package com.example.treeleafquiz.fragments;
+package com.example.treeleafquiz.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.treeleafquiz.MainActivity;
 import com.example.treeleafquiz.databinding.FragmentScoreBinding;
 import com.example.treeleafquiz.util.QuizPreference;
 
@@ -48,8 +47,6 @@ public class ResultFrag extends Fragment {
     }
     private void moveToResultScreen() {
         Activity activity = getActivity();
-
-        // Check if the activity reference is not null and of the correct type
         if (activity instanceof MainActivity) {
             MainActivity hostingActivity = (MainActivity) activity;
             hostingActivity.moveToQuestionFragment();
@@ -63,12 +60,19 @@ public class ResultFrag extends Fragment {
         });
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        QuizPreference.setResult(0);
+    }
+
     private void initView() {
         int result = QuizPreference.getResult();
         String resultString = Integer.toString(result);
        resultBinding.showResult.setText(resultString);
-       resultBinding.bottomText.setText("Your Score is "+resultString +" Points");
-       resultBinding.userNameHere.setText("Well Played "+ QuizPreference.getName());
+       resultBinding.bottomText.setText(String.format("Your Score is %s Points", resultString));
+       if(result>5) resultBinding.userNameHere.setText(String.format("Well Played %s", QuizPreference.getName()));
+       else resultBinding.userNameHere.setText(String.format("Bad Luck  %s", QuizPreference.getName()));
     }
 
 

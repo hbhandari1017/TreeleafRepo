@@ -16,7 +16,6 @@ public class Question {
     private String category;
     private String difficulty;
 
-    // Getters and setters
 
     public int getId() {
         return id;

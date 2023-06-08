@@ -23,8 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SharedRepository {
-    private QuizApi apiService;
-    private QuestionDao dao;
+    private final QuizApi apiService;
+    private final QuestionDao dao;
 
     @Inject
     public SharedRepository(QuizApi apiService, QuestionDao dao) {
@@ -76,10 +76,10 @@ public class SharedRepository {
 
     private QuestionEntity createQuestionEntity(Question question) {
         QuestionEntity questionEntity = new QuestionEntity();
-        //questionEntity.setId(question.getId());
+
         questionEntity.setQuestion(question.getQuestion());
         questionEntity.setDescription(question.getDescription());
-        // Set other properties
+
         questionEntity.setAnswersJson(Converters.toAnswersJson(question.getAnswers()));
         questionEntity.setMultiple_correct_answers(question.isMultiple_correct_answers());
         questionEntity.setCorrect_answersJson(Converters.toCorrectAnswersJson(question.getCorrect_answers()));

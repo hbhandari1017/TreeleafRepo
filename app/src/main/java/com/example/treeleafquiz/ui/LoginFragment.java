@@ -1,9 +1,7 @@
-package com.example.treeleafquiz.fragments;
-
+package com.example.treeleafquiz.ui;
 
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
@@ -11,34 +9,23 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.treeleafquiz.MainActivity;
 import com.example.treeleafquiz.R;
 import com.example.treeleafquiz.databinding.FragmentLoginBinding;
-import com.example.treeleafquiz.repo.SharedRepository;
 import com.example.treeleafquiz.util.QuizPreference;
 import com.example.treeleafquiz.util.SoftKeyboardUtil;
-import com.example.treeleafquiz.viewmodel.LoginViewModel;
 
-import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class LoginFragment extends Fragment {
-
-
-
-
-    private LoginViewModel mViewModel ;
 
 
     private FragmentLoginBinding loginBinding;
@@ -53,11 +40,11 @@ public class LoginFragment extends Fragment {
 
         loginBinding = FragmentLoginBinding.inflate(inflater, container, false);
         String userName = QuizPreference.getName();
-        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+
         loginBinding.submitButton.setEnabled(false);
         if(!userName.isEmpty()){
-            loginBinding.whatShouldTextView.setText(userName+"! we missed you");
-            loginBinding.submitButton.setText("Let's Play");
+            loginBinding.whatShouldTextView.setText(String.format("%s! we missed you", userName));
+            loginBinding.submitButton.setText(R.string.let_s_play);
             loginBinding.nameEditText.setVisibility(View.INVISIBLE);
             loginBinding.submitButton.setEnabled(true);
         }
@@ -77,12 +64,12 @@ public class LoginFragment extends Fragment {
         loginBinding.userNameEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // This method is called before the text is changed.
+
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // This method is called when the text is changing.
+
             }
 
             @Override
@@ -108,8 +95,8 @@ public class LoginFragment extends Fragment {
     }
     private void showWelcomeDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity(), R.style.AlertDialogCustom);
-        builder.setTitle("Quiz Instructions");
-        builder.setMessage("You are about to start a quiz with 10 questions. You will have 2 minutes to complete the quiz. Good luck!");
+        builder.setTitle(R.string.quiz_title);
+        builder.setMessage(R.string.quiz_description);
 
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

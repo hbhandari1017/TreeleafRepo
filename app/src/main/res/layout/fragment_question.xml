@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     android:orientation="vertical"
-    tools:context=".fragments.LoginFragment">
+    tools:context=".ui.LoginFragment">
 
 
 
@@ -118,8 +118,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/answerOptions"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="140dp"
+                android:gravity="center"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="120dp"
                 android:background="@drawable/button_bg_warm_pink"
                 android:fontFamily="@font/nunito_bold"
                 android:text="Submit"

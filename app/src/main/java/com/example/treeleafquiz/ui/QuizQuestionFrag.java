@@ -1,4 +1,4 @@
-package com.example.treeleafquiz.fragments;
+package com.example.treeleafquiz.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -16,13 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.treeleafquiz.MainActivity;
 import com.example.treeleafquiz.R;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
 import com.example.treeleafquiz.databinding.FragmentQuestionBinding;
 import com.example.treeleafquiz.util.QuizPreference;
 import com.example.treeleafquiz.util.Resource;
-import com.example.treeleafquiz.viewmodel.LoginViewModel;
+import com.example.treeleafquiz.viewmodel.SharedViewModel;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -36,7 +35,7 @@ import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
 public class QuizQuestionFrag extends Fragment {
-    private LoginViewModel mViewModel;
+    private SharedViewModel mViewModel;
     private FragmentQuestionBinding quizBinding;
 
 
@@ -55,7 +54,7 @@ public class QuizQuestionFrag extends Fragment {
                              @Nullable Bundle savedInstanceState) {
 
         quizBinding = FragmentQuestionBinding.inflate(inflater, container, false);
-        mViewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        mViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
         return quizBinding.getRoot();
 
@@ -220,6 +219,7 @@ public class QuizQuestionFrag extends Fragment {
         }
 
     }
+
 
     private void findCorrectAnswer(String questionJson) {
 

@@ -1,7 +1,8 @@
 package com.example.treeleafquiz.di.module;
 
-import static com.example.treeleafquiz.network.Url.API_KEY;
-import static com.example.treeleafquiz.network.Url.BASE_URL;
+import static com.example.treeleafquiz.util.AppConstant.API_KEY;
+import static com.example.treeleafquiz.util.AppConstant.API_KEY_NAME;
+import static com.example.treeleafquiz.util.AppConstant.BASE_URL;
 
 import com.example.treeleafquiz.network.QuizApi;
 
@@ -23,16 +24,14 @@ public class NetworkModule {
     public static Retrofit provideRetrofit() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
-        // Add logging interceptor for debugging (optional)
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         httpClient.addInterceptor(loggingInterceptor);
 
-        // Add header token interceptor
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder()
-                    .header("X-Api-Key", API_KEY)
+                    .header(API_KEY_NAME, API_KEY)
                     .method(original.method(), original.body());
             Request request = requestBuilder.build();
             return chain.proceed(request);

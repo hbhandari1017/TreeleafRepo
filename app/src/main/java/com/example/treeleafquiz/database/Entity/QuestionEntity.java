@@ -1,7 +1,7 @@
 package com.example.treeleafquiz.database.Entity;
 
 
-import static com.example.treeleafquiz.network.Url.TABLE_NAME;
+import static com.example.treeleafquiz.util.AppConstant.TABLE_NAME;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;

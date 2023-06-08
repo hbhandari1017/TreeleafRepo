@@ -14,7 +14,6 @@ import java.util.List;
 @Dao
 public interface QuestionDao {
 
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     List<Long>  insertQuestions(List<QuestionEntity> question);
 

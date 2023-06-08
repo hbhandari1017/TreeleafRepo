@@ -2,4 +2,7 @@
     <string name="app_name">QBrain</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="let_s_play">Let\'s Play</string>
+    <string name="quiz_title">Quiz Instructions</string>
+    <string name="quiz_description">You are about to start a quiz with 10 questions. You will have 2 minutes to complete the quiz. Good luck!</string>
 </resources>
