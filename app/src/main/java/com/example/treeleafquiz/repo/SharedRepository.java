@@ -4,16 +4,13 @@ package com.example.treeleafquiz.repo;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 
-import com.example.treeleafquiz.RepositoryCallback;
+import com.example.treeleafquiz.callback.RepositoryCallback;
 import com.example.treeleafquiz.database.Converters.Converters;
 import com.example.treeleafquiz.database.Dao.QuestionDao;
-import com.example.treeleafquiz.database.Database.AppDatabase;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
 import com.example.treeleafquiz.model.Question;
 import com.example.treeleafquiz.network.QuizApi;
-import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;

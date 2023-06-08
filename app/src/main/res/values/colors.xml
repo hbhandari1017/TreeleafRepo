@@ -9,6 +9,8 @@
     <color name="inputLabel">#324851</color>
     <color name="border">#C4C4C4</color>
     <color name="lt_grey">#C4C4C4</color>
+    <color name="green">#18BD1F</color>
+    <color name="lightred">#B64646</color>
     <color name="action_button_color">#aeaeae</color>
     <color name="textColor">#324851</color>
     <color name="ltTextColor">#7A7A7A</color>

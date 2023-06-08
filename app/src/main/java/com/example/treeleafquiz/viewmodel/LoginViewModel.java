@@ -8,7 +8,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.treeleafquiz.RepositoryCallback;
+import com.example.treeleafquiz.callback.RepositoryCallback;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
 import com.example.treeleafquiz.model.Question;
 import com.example.treeleafquiz.repo.SharedRepository;
@@ -33,6 +33,63 @@ public class LoginViewModel extends ViewModel {
         questionsFromApiState = new MutableLiveData<>();
         individualQuestionsLiveData = new MutableLiveData<>();
     }
+    String isAnswerACorrect;
+    String isAnswerBCorrect;
+
+
+
+    public String getIsAnswerACorrect() {
+        return isAnswerACorrect;
+    }
+
+    public void setIsAnswerACorrect(String isAnswerACorrect) {
+        this.isAnswerACorrect = isAnswerACorrect;
+    }
+
+    public String getIsAnswerBCorrect() {
+        return isAnswerBCorrect;
+    }
+
+    public void setIsAnswerBCorrect(String isAnswerBCorrect) {
+        this.isAnswerBCorrect = isAnswerBCorrect;
+    }
+
+    public String getIsAnswerCCorrect() {
+        return isAnswerCCorrect;
+    }
+
+    public void setIsAnswerCCorrect(String isAnswerCCorrect) {
+        this.isAnswerCCorrect = isAnswerCCorrect;
+    }
+
+    public String getIsAnswerDCorrect() {
+        return isAnswerDCorrect;
+    }
+
+    public void setIsAnswerDCorrect(String isAnswerDCorrect) {
+        this.isAnswerDCorrect = isAnswerDCorrect;
+    }
+
+    public String getIsAnswerECorrect() {
+        return isAnswerECorrect;
+    }
+
+    public void setIsAnswerECorrect(String isAnswerECorrect) {
+        this.isAnswerECorrect = isAnswerECorrect;
+    }
+
+    public String getIsAnswerFCorrect() {
+        return isAnswerFCorrect;
+    }
+
+    public void setIsAnswerFCorrect(String isAnswerFCorrect) {
+        this.isAnswerFCorrect = isAnswerFCorrect;
+    }
+
+    String isAnswerCCorrect;
+    String isAnswerDCorrect;
+    String isAnswerECorrect;
+    String isAnswerFCorrect;
 
     private SharedRepository repository;
 

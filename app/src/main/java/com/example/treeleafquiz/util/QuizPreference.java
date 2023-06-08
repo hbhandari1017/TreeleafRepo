@@ -40,7 +40,7 @@ public class QuizPreference {
     }
 
     public static int getResult() {
-        return mPrefs.getInt(RESULT, 15);
+        return mPrefs.getInt(RESULT, 0);
     }
 
 

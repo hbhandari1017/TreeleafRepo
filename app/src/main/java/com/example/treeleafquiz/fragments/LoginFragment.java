@@ -119,7 +119,8 @@ public class LoginFragment extends Fragment {
                 // Check if the activity reference is not null and of the correct type
                 if (activity instanceof MainActivity) {
                     MainActivity hostingActivity = (MainActivity) activity;
-                    hostingActivity.moveToQuestionFragment();
+                     hostingActivity.moveToQuestionFragment();
+
                 }
             }
         });

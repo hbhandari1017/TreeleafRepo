@@ -1,4 +1,4 @@
-package com.example.treeleafquiz;
+package com.example.treeleafquiz.callback;
 
 
 public interface RepositoryCallback<T> {

@@ -1,66 +1,77 @@
 package com.example.treeleafquiz.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.treeleafquiz.R;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ResultFrag#newInstance} factory method to
- * create an instance of this fragment.
- */
+import com.example.treeleafquiz.MainActivity;
+import com.example.treeleafquiz.databinding.FragmentScoreBinding;
+import com.example.treeleafquiz.util.QuizPreference;
+
+import dagger.hilt.android.AndroidEntryPoint;
+
+
+@AndroidEntryPoint
 public class ResultFrag extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private FragmentScoreBinding resultBinding;
 
-    public ResultFrag() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ResultFrag.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ResultFrag newInstance(String param1, String param2) {
-        ResultFrag fragment = new ResultFrag();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static ResultFrag newInstance() {
+        return new ResultFrag();
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+
+        resultBinding = FragmentScoreBinding.inflate(inflater, container, false);
+
+        return resultBinding.getRoot();
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView();
+        initListeners();
+
+
+
+    }
+    private void moveToResultScreen() {
+        Activity activity = getActivity();
+
+        // Check if the activity reference is not null and of the correct type
+        if (activity instanceof MainActivity) {
+            MainActivity hostingActivity = (MainActivity) activity;
+            hostingActivity.moveToQuestionFragment();
         }
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_result, container, false);
+    private void initListeners() {
+        resultBinding.playAgain.setOnClickListener(v -> {
+            QuizPreference.setResult(0);
+            moveToResultScreen();
+        });
     }
+
+    private void initView() {
+        int result = QuizPreference.getResult();
+        String resultString = Integer.toString(result);
+       resultBinding.showResult.setText(resultString);
+       resultBinding.bottomText.setText("Your Score is "+resultString +" Points");
+       resultBinding.userNameHere.setText("Well Played "+ QuizPreference.getName());
+    }
+
+
+
+
 }
