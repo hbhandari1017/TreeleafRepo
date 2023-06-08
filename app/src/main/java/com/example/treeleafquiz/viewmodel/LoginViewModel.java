@@ -37,6 +37,16 @@ public class LoginViewModel extends ViewModel {
     private SharedRepository repository;
 
     Handler mainHandler = new Handler(Looper.getMainLooper());
+
+    public int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void setQuestionNumber(int questionNumber) {
+        this.questionNumber = questionNumber;
+    }
+
+    public int questionNumber = 1 ;
     private MutableLiveData<Resource<List<QuestionEntity>>> questionsLiveData;
     private MutableLiveData<Resource<QuestionEntity>> individualQuestionsLiveData;
     private MutableLiveData<Resource<String>> questionsFromApiState;
