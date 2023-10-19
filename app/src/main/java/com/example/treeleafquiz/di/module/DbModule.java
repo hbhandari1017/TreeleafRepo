@@ -22,7 +22,7 @@ public class DbModule {
     @Provides
     public static AppDatabase provideAppDatabase(@ApplicationContext Context context)  {
         return  Room.databaseBuilder(context,
-                        AppDatabase.class, DB_NAME)
+                        AppDatabase.class, DB_NAME).fallbackToDestructiveMigration()
                 .build();
     }
 

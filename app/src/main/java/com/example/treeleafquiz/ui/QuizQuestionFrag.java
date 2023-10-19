@@ -3,6 +3,7 @@ package com.example.treeleafquiz.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -276,8 +277,11 @@ public class QuizQuestionFrag extends Fragment {
 
         quizBinding.answerSubmitButton.setOnClickListener(v -> {
             quizBinding.progressBar.setVisibility(View.VISIBLE);
+
             if (Objects.equals(mViewModel.getIsAnswerACorrect(), "true")) {
                 quizBinding.optionA.setBackgroundColor(getResources().getColor(R.color.green));
+
+
                 Log.e("IMp", "answer actually is  a");
                 if (selectedRadioButton.getId() == R.id.optionA) {
 
@@ -313,7 +317,11 @@ public class QuizQuestionFrag extends Fragment {
             Log.e("IMp", "c" + R.id.optionC);
             Log.e("IMp", "d" + R.id.optionD);
             Log.e("IMp", "answer selected is  " + selectedRadioButton.getId());
+            new Handler().postDelayed(() -> {
+
             mViewModel.getIndividualQuestionFromDB(mViewModel.getQuestionNumber());
+
+            }, 500);
         });
 
     }

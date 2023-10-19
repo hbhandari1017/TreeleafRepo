@@ -4,6 +4,7 @@ import static com.example.treeleafquiz.util.AppConstant.API_KEY;
 import static com.example.treeleafquiz.util.AppConstant.API_KEY_NAME;
 import static com.example.treeleafquiz.util.AppConstant.BASE_URL;
 
+import com.example.treeleafquiz.BuildConfig;
 import com.example.treeleafquiz.network.QuizApi;
 
 import dagger.Module;
@@ -23,22 +24,24 @@ public class NetworkModule {
     @Provides
     public static Retrofit provideRetrofit() {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+        if(BuildConfig.DEBUG){
+            HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+            httpClient.addInterceptor(loggingInterceptor);
 
-        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
-        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        httpClient.addInterceptor(loggingInterceptor);
+        }
 
         httpClient.addInterceptor(chain -> {
             Request original = chain.request();
             Request.Builder requestBuilder = original.newBuilder()
-                    .header(API_KEY_NAME, API_KEY)
+                    .header(BuildConfig.API_KEY_NAME, BuildConfig.API_KEY)
                     .method(original.method(), original.body());
             Request request = requestBuilder.build();
             return chain.proceed(request);
         });
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient.build())
                 .build();

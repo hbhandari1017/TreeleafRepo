@@ -17,9 +17,9 @@ public interface QuestionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     List<Long>  insertQuestions(List<QuestionEntity> question);
 
-    @Query("SELECT * FROM quiz_question LIMIT 10")
+    @Query("SELECT * FROM quiz_question_tbl LIMIT 10")
     List<QuestionEntity> getAllQuestions();
-    @Query("SELECT * FROM quiz_question WHERE id = :questionId LIMIT 1")
+    @Query("SELECT * FROM quiz_question_tbl WHERE id = :questionId LIMIT 1")
     QuestionEntity getQuestionById(int questionId);
 
 }
