@@ -164,7 +164,10 @@ public class QuizQuestionFrag extends Fragment {
         if (firstTime) {
             startCountdownTimer(120000);
             firstTime = false;
+            quizBinding.questionCount.setText("1/10");
         }
+        int newQuestionCount = mViewModel.questionCount++;
+        quizBinding.questionCount.setText(newQuestionCount+"/10");
         resetAnswerBg();
         quizBinding.questionTextView.setText(question.getQuestion());
         quizBinding.tagsTextView.setText(question.getTagsJson());

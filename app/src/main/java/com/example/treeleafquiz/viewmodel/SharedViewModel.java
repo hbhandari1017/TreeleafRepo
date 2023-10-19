@@ -27,6 +27,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel;
 @HiltViewModel
 public class SharedViewModel extends ViewModel {
 
+    public int questionCount = 1;
+
     @Inject
     public SharedViewModel(SharedRepository repository) {
         this.repository = repository;
