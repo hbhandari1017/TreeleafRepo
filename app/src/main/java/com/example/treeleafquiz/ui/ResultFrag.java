@@ -74,8 +74,8 @@ public class ResultFrag extends Fragment {
         resultBinding.progressBar.setProgress(finalResult);
        resultBinding.showResult.setText(resultString);
        resultBinding.bottomText.setText(String.format("Your Score is %s Points", resultString));
-       if(result>5) resultBinding.userNameHere.setText(String.format("Well Played %s", QuizPreference.getName()));
-       else resultBinding.userNameHere.setText(String.format("Bad Luck  %s", QuizPreference.getName()));
+       if(result>5) resultBinding.userNameHere.setText(String.format("Well Played %s !!", QuizPreference.getName()));
+       else resultBinding.userNameHere.setText(String.format("Well tried  %s !", QuizPreference.getName()));
     }
 
 
