@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.treeleafquiz.R;
 import com.example.treeleafquiz.database.Entity.QuestionEntity;
 import com.example.treeleafquiz.databinding.FragmentQuestionBinding;
+import com.example.treeleafquiz.util.NetworkUtil;
 import com.example.treeleafquiz.util.QuizPreference;
 import com.example.treeleafquiz.util.Resource;
 import com.example.treeleafquiz.viewmodel.SharedViewModel;
@@ -67,7 +68,13 @@ public class QuizQuestionFrag extends Fragment {
         quizBinding.answerSubmitButton.setEnabled(false);
         initListeners();
         initObservers();
-        mViewModel.getAllQuestions();
+        if (NetworkUtil.isConnected(requireContext())){
+            mViewModel.getAllQuestions();
+        } else {
+            mViewModel.getQuestionsFromDB();
+        }
+
+
 
     }
 
@@ -79,11 +86,13 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.SUCCESS) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 List<QuestionEntity> questions = resource.getData();
+                mViewModel.getIndividualQuestionFromDB(mViewModel.getQuestionNumber());
                 // Handle success state and display the questions
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
-                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
+                checkInternetConnection();
             }
         });
         mViewModel.getIndividualQuestionsLiveData().observe(getViewLifecycleOwner(), resource -> {
@@ -108,7 +117,8 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
-                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
+                checkInternetConnection();
             }
         });
         mViewModel.getApiStateLiveData().observe(getViewLifecycleOwner(), resource -> {
@@ -121,10 +131,17 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
-                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
+                checkInternetConnection();
             }
         });
 
+    }
+
+    private void checkInternetConnection() {
+        if (NetworkUtil.isConnected(requireContext())){
+            mViewModel.getAllQuestions();
+        }
     }
 
     private void moveToResultScreen() {

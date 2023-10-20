@@ -1,11 +1,16 @@
 package com.example.treeleafquiz.ui;
 
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,12 +94,14 @@ public class LoginFragment extends Fragment {
         loginBinding.submitButton.setOnClickListener(v -> {
             SoftKeyboardUtil.hideSoftKeyboard(requireContext(), loginBinding.userNameEditText);
             String userName = loginBinding.userNameEditText.getText().toString();
+            QuizPreference.init(requireContext());
             QuizPreference.setName(userName);
             showWelcomeDialog();
         });
     }
     private void showWelcomeDialog(){
-        AlertDialog.Builder builder = new AlertDialog.Builder(requireActivity(), R.style.AlertDialogCustom);
+        Context themedContext = new ContextThemeWrapper(requireActivity(), R.style.AlertDialogCustom2);
+        AlertDialog.Builder builder = new AlertDialog.Builder(themedContext);
         builder.setTitle(R.string.quiz_title);
         builder.setMessage(R.string.quiz_description);
 

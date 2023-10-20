@@ -29,6 +29,9 @@ public class QuizPreference {
     public static void setName(String name) {
         mEditor.putString(USER, name).apply();
         mEditor.apply();
+
+
+
     }
     public static String getName() {
         return mPrefs.getString(USER, "");
@@ -37,6 +40,7 @@ public class QuizPreference {
     public static void setResult(int count) {
         mEditor.putInt(RESULT, count);
         mEditor.apply();
+
     }
 
     public static int getResult() {

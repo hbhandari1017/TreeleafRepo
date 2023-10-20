@@ -68,7 +68,10 @@ public class ResultFrag extends Fragment {
 
     private void initView() {
         int result = QuizPreference.getResult();
+        int finalResult = result*10;
         String resultString = Integer.toString(result);
+
+        resultBinding.progressBar.setProgress(finalResult);
        resultBinding.showResult.setText(resultString);
        resultBinding.bottomText.setText(String.format("Your Score is %s Points", resultString));
        if(result>5) resultBinding.userNameHere.setText(String.format("Well Played %s", QuizPreference.getName()));

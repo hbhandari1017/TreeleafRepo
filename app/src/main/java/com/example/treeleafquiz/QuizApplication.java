@@ -14,6 +14,7 @@ public class QuizApplication extends Application {
     public void onCreate() {
         super.onCreate();
         QuizPreference.init(getApplicationContext());
+        QuizPreference.setResult(0);
     }
 
     @Override

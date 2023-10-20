@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="15dp"
-            android:background="@color/white"
+            android:background="@drawable/gradient_background"
             android:orientation="vertical"
            >
 
@@ -112,27 +112,24 @@
                     android:layout_height="200dp"
                     android:layout_centerInParent="true">
 
-                        <View
-                            android:id="@+id/outer_circle"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/outer_circular"
-                            android:layout_centerInParent="true" />
 
-                        <View
-                            android:id="@+id/inner_circle"
+                        <ProgressBar
+                            android:id="@+id/progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/circular_background"
-                            android:layout_centerInParent="true" />
+                            android:background="@drawable/circular_shape"
+                            android:indeterminate="false"
+                            android:progressDrawable="@drawable/circular_progress_bar"
+                            android:textAlignment="center" />
 
                     <TextView
                         android:id="@+id/showResult"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="0"
-                        android:textColor="#FFFFFF"
-                        android:textSize="50dp"
+                        android:textColor="@color/warmPink"
+                        android:textSize="40dp"
                         android:layout_gravity="center" />
 
                 </FrameLayout>

@@ -3,6 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="warmPink">#FB724C</color>
+    <color name="yellow">#F4DD0B</color>
 
     <color name="borderFocusedColor">#1392C5</color>
     <color name="errorRedColor">#FF2E00</color>
