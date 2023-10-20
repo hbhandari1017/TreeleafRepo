@@ -18,6 +18,7 @@
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/Theme.Material3.DayNight.NoActionBar"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

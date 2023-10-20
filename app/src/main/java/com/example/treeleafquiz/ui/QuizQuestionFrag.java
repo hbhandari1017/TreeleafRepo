@@ -91,6 +91,9 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
+                if(errorMessage == null){
+                    errorMessage = "";
+                }
                 Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
                 checkInternetConnection();
             }
@@ -117,6 +120,9 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
+                if(errorMessage == null){
+                    errorMessage = "";
+                }
                 Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
                 checkInternetConnection();
             }
@@ -131,6 +137,9 @@ public class QuizQuestionFrag extends Fragment {
             } else if (resource.getState() == Resource.State.ERROR) {
                 quizBinding.progressBar.setVisibility(View.GONE);
                 String errorMessage = resource.getMessage();
+                if(errorMessage == null){
+                    errorMessage = "";
+                }
                 Toast.makeText(getContext(), errorMessage+" check internet connection", Toast.LENGTH_SHORT).show();
                 checkInternetConnection();
             }
