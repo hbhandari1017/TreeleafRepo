@@ -7,7 +7,7 @@ Basic Quiz app .
 
 
 
-langauge: Java
+language: Java
 Architecture followed: MVVM with repository
 Room for database 
 Dagger Hilt for dependency injection.

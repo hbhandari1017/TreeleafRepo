@@ -232,7 +232,7 @@ public class QuizQuestionFrag extends Fragment {
                 quizBinding.optionC.setVisibility(View.GONE);
             } else {
                 quizBinding.optionC.setVisibility(View.VISIBLE);
-                quizBinding.optionC.setText(answerB);
+                quizBinding.optionC.setText(answerC);
             }
 
             String answerD = answersJson.optString("answer_d", "");
