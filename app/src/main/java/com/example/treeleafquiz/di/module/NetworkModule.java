@@ -1,8 +1,6 @@
 package com.example.treeleafquiz.di.module;
 
-import static com.example.treeleafquiz.util.AppConstant.API_KEY;
-import static com.example.treeleafquiz.util.AppConstant.API_KEY_NAME;
-import static com.example.treeleafquiz.util.AppConstant.BASE_URL;
+
 
 import com.example.treeleafquiz.BuildConfig;
 import com.example.treeleafquiz.network.QuizApi;

@@ -94,7 +94,7 @@ public class SharedViewModel extends ViewModel {
     String isAnswerECorrect;
     String isAnswerFCorrect;
 
-    private SharedRepository repository;
+    private final SharedRepository repository;
 
     Handler mainHandler = new Handler(Looper.getMainLooper());
 
