@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.treeleafquiz'
+    namespace 'com.suman.treeleafquiz'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.treeleafquiz"
+        applicationId "com.suman.treeleafquiz"
         minSdk 24
         targetSdk 33
         versionCode 1
